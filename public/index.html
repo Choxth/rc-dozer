@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RC Dozer!</title>
+
+  </head>
+  <body>
+  <img src="/stream"/>
+     <!--<canvas style="margin: 3px; border: 1px solid black; float: right;" id="servoCanvas" width="200" height="500"></canvas>-->
+     <canvas style="margin: 3px; border: 1px solid black; float: right;" id="motorCanvas" width="300" height="300"></canvas>
+     <p/>
+
+  <canvas style="margin: 3px; border: 1px solid black; " id="xlCanvas" width="500" height="200"></canvas>
+  <canvas style="margin: 3px; border: 1px solid black; " id="gyroCanvas" width="500" height="200"></canvas>
+  <p/>
+
+    <input type="text" id="urlBox" value="http://50.50.50.160:8000" width="300px;" >Base device URL </input>
+
+<input type="checkbox" id="enabled">Enable remote control<br>
+<input type="checkbox" id="reversed">Reverse Polarity<br>
+
+<script type="text/javascript" src="util.js"></script>
+<script type="text/javascript" src="constrainedMotorComponent.js"></script>
+  <script type="text/javascript" src="graphComponent.js"></script>
+  <script>
+      try {
+          var urlBox = 'urlBox';
+          var options = {
+              min: -1,
+              max: 1,
+              plotFirst: 0,
+              plotEvery: 3,
+              pollEvery: 1000
+          };
+          var xlGraph = new com_allthings.GraphComponent();
+              xlGraph.init('xlCanvas', urlBox, '/bodyMonitor/acceleration', options);
+              xlGraph.startTimer();
+
+          var gyroOptions = {
+                  min: -40,
+                  max: 40,
+                  plotFirst: 2,
+                  plotEvery: 3,
+                  pollEvery: 1000
+
+      };
+      var gyroGraph = new com_allthings.GraphComponent();
+          gyroGraph.init('gyroCanvas', urlBox, '/bodyMonitor/rotation', gyroOptions);
+          gyroGraph.startTimer();
+
+      } catch (e) {
+          console.log('Exception initing graph: ', e);
+      }
+  </script>
+<!--<script type="text/javascript" src="bodyScriptFunctions.js"></script>-->
+
+  </body>
+</html>

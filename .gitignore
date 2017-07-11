@@ -1,0 +1,6 @@
+# my saved file directory
+arkive/*
+
+node_modules/*
+
+.idea/*

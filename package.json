@@ -1,0 +1,22 @@
+{
+  "name": "rc-dozer",
+  "version": "0.0.0",
+  "description": "Tessel project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "www.github.com/tessel/t2-cli",
+  "keywords": [
+    "Tessel"
+  ],
+  "license": "MIT",
+  "readme": "A streamy camera project controlling motors, servos, and other i2c instruments",
+  "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "tessel-av": "^0.19.0"
+  }
+}
